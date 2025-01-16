@@ -1,0 +1,76 @@
+{
+  "version": "0.1.0",
+  "description": "CoNFT domains custom resolver.",
+  "proposedName": "CoNFT Name resolver",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MetaMask/template-snap-monorepo.git"
+  },
+  "source": {
+    "shasum": "epUn+EcY0UEIs7jc/5GakQz6m4Mac9+do2z35MU5xDc=",
+    "location": {
+      "npm": {
+        "iconPath": "img/icon.svg",
+        "filePath": "dist/bundle.js",
+        "packageName": "CoNFT name resolver",
+        "registry": "https://registry.npmjs.org/"
+      }
+    }
+  },
+  "initialPermissions": {
+    "endowment:network-access": {},
+    "snap_dialog": {},
+    "endowment:name-lookup": {
+      "chains": [
+        "eip155:1",
+        "eip155:5",
+        "eip155:10",
+        "eip155:30",
+        "eip155:40",
+        "eip155:56",
+        "eip155:57",
+        "eip155:97",
+        "eip155:100",
+        "eip155:122",
+        "eip155:137",
+        "eip155:1442",
+        "eip155:167",
+        "eip155:204",
+        "eip155:250",
+        "eip155:280",
+        "eip155:324",
+        "eip155:42161",
+        "eip155:42170",
+        "eip155:42220",
+        "eip155:43114",
+        "eip155:4689",
+        "eip155:8453",
+        "eip155:1088",
+        "eip155:1116",
+        "eip155:119",
+        "eip155:252",
+        "eip155:7777777",
+        "eip155:1101",
+        "eip155:1284",
+        "eip155:1285",
+        "eip155:1313161554",
+        "eip155:1666600000",
+        "eip155:4002",
+        "eip155:1030",
+        "eip155:534353",
+        "eip155:534354",
+        "eip155:534352",
+        "eip155:81457",
+        "eip155:200901",
+        "eip155:80084",
+        "eip155:997"
+      ]
+    },
+    "endowment:rpc": {
+      "dapps": true,
+      "snaps": true
+    }
+  },
+  "platformVersion": "6.14.0",
+  "manifestVersion": "0.1"
+}
