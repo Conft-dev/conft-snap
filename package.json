@@ -1,6 +1,6 @@
 {
   "name": "@conft-dev/name-resolver",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "CoLabs name resolver",
   "repository": {
     "type": "git",
