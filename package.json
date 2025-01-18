@@ -1,5 +1,5 @@
 {
-  "name": "CoNFT name resolver",
+  "name": "@conft-dev/name-resolver",
   "version": "0.1.0",
   "description": "CoLabs name resolver",
   "repository": {

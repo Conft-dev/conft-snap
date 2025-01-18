@@ -13,54 +13,61 @@ export const onNameLookup: OnNameLookupHandler = async (request: {
   if (!domain || !chainId) {
     return null;
   }
-
-  // Функция для получения контракта с API
+  const abi = [
+    {
+      name: 'nameToAddress',
+      type: 'function',
+      inputs: [
+        {
+          name: 'domainName',
+          type: 'string',
+          internalType: 'string',
+        },
+      ],
+      outputs: [
+        {
+          name: '',
+          type: 'address',
+          internalType: 'address',
+        },
+      ],
+      stateMutability: 'view',
+    },
+    {
+      name: 'nameToAdress',
+      type: 'function',
+      inputs: [
+        {
+          name: 'domainName',
+          type: 'string',
+          internalType: 'string',
+        },
+      ],
+      outputs: [
+        {
+          name: '',
+          type: 'address',
+          internalType: 'address',
+        },
+      ],
+      stateMutability: 'view',
+    },
+  ];
+  // получение контракта с апи
   const getDomainContract = async (blockchainId: string) => {
     const AUTOCONTRACTS_API_HOST = 'https://autocontracts.conft.app';
 
     const url = `${AUTOCONTRACTS_API_HOST}/chains/${blockchainId}/contracts/domains`;
 
     try {
-      // const response = await fetch(url);
-      // console.log(response);
-      // if (!response.ok) {
-      //   throw new Error(
-      //     `Failed to fetch domain contract: ${response.statusText}`,
-      //   );
-      // }
-      const result = {
-        abi: [
-          {
-            name: 'nameToAddress',
-            type: 'function',
-            inputs: [
-              {
-                name: 'domainName',
-                type: 'string',
-                internalType: 'string',
-              },
-            ],
-            outputs: [
-              {
-                name: '',
-                type: 'address',
-                internalType: 'address',
-              },
-            ],
-            stateMutability: 'view',
-          },
-        ],
-        address: '0xB5a236ED367840b3decA26B19B1084308CA8b0F8',
-        blockchain: {
-          rpcs: [
-            'https://rpc.scroll.io',
-            'https://rpc.ankr.com/scroll',
-            'https://scroll-mainnet.chainstacklabs.com',
-            'https://scroll-rpc.publicnode.com',
-          ],
-        },
-      };
-      // const result = await response.json();
+      const response = await fetch(url);
+      console.log(response);
+      if (!response.ok) {
+        throw new Error(
+          `Failed to fetch domain contract: ${response.statusText}`,
+        );
+      }
+      const result = await response.json();
       console.log('======result======', result, url);
       return result;
     } catch (error) {
@@ -80,7 +87,7 @@ export const onNameLookup: OnNameLookupHandler = async (request: {
         throw new Error('Domain contract not found');
       }
 
-      const { abi, address: contractAddress, blockchain } = contractData;
+      const { address: contractAddress, blockchain } = contractData;
       const rpc = blockchain.rpcs[0];
 
       if (!rpc) {
@@ -88,13 +95,12 @@ export const onNameLookup: OnNameLookupHandler = async (request: {
       }
 
       // Создаём провайдер и контракт
-      const provider = new ethers.providers.JsonRpcProvider(
-        'https://rpc.scroll.io',
-      );
+      const provider = new ethers.providers.JsonRpcProvider(rpc);
       const contract = new ethers.Contract(contractAddress, abi, provider);
-
+      console.log('contract', contractAddress, blockchain);
+      console.log('contract', contract);
       // Вызываем метод nameToAddress для мэтча адреса и имени
-      const userAddress = await contract.nameToAddress(domainName);
+      const userAddress = await contract.nameToAdress(domainName);
 
       return userAddress || null;
     } catch (error) {

@@ -1,18 +1,18 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "CoNFT domains custom resolver.",
   "proposedName": "CoNFT Name resolver",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MetaMask/template-snap-monorepo.git"
+    "url": "https://github.com/Conft-dev/conft-snap"
   },
   "source": {
-    "shasum": "epUn+EcY0UEIs7jc/5GakQz6m4Mac9+do2z35MU5xDc=",
+    "shasum": "OE4PMdmXd/lwUa5C1urjS9jT055LDtan4OAYgcTjy7s=",
     "location": {
       "npm": {
         "iconPath": "img/icon.svg",
         "filePath": "dist/bundle.js",
-        "packageName": "CoNFT name resolver",
+        "packageName": "@conft-dev/name-resolver",
         "registry": "https://registry.npmjs.org/"
       }
     }
@@ -24,6 +24,8 @@
       "chains": [
         "eip155:1",
         "eip155:5",
+        "eip155:59144",
+        "eip155:98985",
         "eip155:10",
         "eip155:30",
         "eip155:40",
