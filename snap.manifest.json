@@ -7,7 +7,7 @@
     "url": "https://github.com/Conft-dev/conft-snap"
   },
   "source": {
-    "shasum": "OE4PMdmXd/lwUa5C1urjS9jT055LDtan4OAYgcTjy7s=",
+    "shasum": "QoPmEnhRj9d9Br99Pk2WxfQCTeskj4gCpQ0TMwApdL4=",
     "location": {
       "npm": {
         "iconPath": "img/icon.svg",
@@ -19,12 +19,12 @@
   },
   "initialPermissions": {
     "endowment:network-access": {},
-    "snap_dialog": {},
     "endowment:name-lookup": {
       "chains": [
         "eip155:1",
         "eip155:5",
         "eip155:59144",
+        "eip155:167000",
         "eip155:98985",
         "eip155:10",
         "eip155:30",
@@ -65,6 +65,11 @@
         "eip155:81457",
         "eip155:200901",
         "eip155:80084",
+        "eip155:80085",
+        "eip155:2710",
+        "eip155:4200",
+        "eip155:60808",
+        "eip155:325000",
         "eip155:997"
       ]
     },
