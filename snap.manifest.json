@@ -1,7 +1,7 @@
 {
-  "version": "0.2.1",
-  "description": "CoNFT domains custom resolver.",
-  "proposedName": "CoNFT Name resolver",
+  "version": "0.2.2",
+  "description": "Colabs domains custom resolver.",
+  "proposedName": "Colabs name resolver",
   "repository": {
     "type": "git",
     "url": "https://github.com/Conft-dev/conft-snap"
@@ -12,7 +12,7 @@
       "npm": {
         "iconPath": "img/icon.svg",
         "filePath": "dist/bundle.js",
-        "packageName": "@conft-dev/name-resolver",
+        "packageName": "@colabs-dev/name-resolver",
         "registry": "https://registry.npmjs.org/"
       }
     }

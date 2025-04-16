@@ -1,7 +1,7 @@
 {
-  "name": "@conft-dev/name-resolver",
-  "version": "0.2.1",
-  "description": "CoLabs name resolver",
+  "name": "@colabs-dev/name-resolver",
+  "version": "0.2.2",
+  "description": "Colabs name resolver",
   "repository": {
     "type": "git",
     "url": "https://github.com/Conft-dev/conft-snap"
@@ -21,7 +21,6 @@
     "lint:eslint": "eslint . --cache --ext js,ts",
     "lint:fix": "yarn lint:eslint --fix && yarn lint:misc --write",
     "lint:misc": "prettier '**/*.json' '**/*.md' '!CHANGELOG.md' --ignore-path .gitignore",
-    "prepublishOnly": "mm-snap manifest",
     "serve": "mm-snap serve",
     "start": "mm-snap watch",
     "test": "jest"
