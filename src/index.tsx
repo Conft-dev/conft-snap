@@ -1,9 +1,9 @@
 import type {
   OnNameLookupHandler,
   OnInstallHandler,
-} from '@metamask/snaps-sdk';
-import { Box, Heading, Text, Divider, Row } from '@metamask/snaps-sdk/jsx';
-import { ethers } from 'ethers';
+} from "@metamask/snaps-sdk";
+import { Box, Heading, Text, Divider, Row } from "@metamask/snaps-sdk/jsx";
+import { ethers } from "ethers";
 
 export const onNameLookup: OnNameLookupHandler = async (request: {
   chainId: string;
@@ -15,47 +15,25 @@ export const onNameLookup: OnNameLookupHandler = async (request: {
   }
   const abi = [
     {
-      name: 'nameToAddress',
-      type: 'function',
-      inputs: [
-        {
-          name: 'domainName',
-          type: 'string',
-          internalType: 'string',
-        },
-      ],
-      outputs: [
-        {
-          name: '',
-          type: 'address',
-          internalType: 'address',
-        },
-      ],
-      stateMutability: 'view',
+      name: "TOP_LEVEL_DOMAIN",
+      type: "function",
+      inputs: [],
+      outputs: [{ name: "", type: "string", internalType: "string" }],
+      stateMutability: "view",
     },
     {
-      name: 'nameToAdress',
-      type: 'function',
+      name: "fullNameToAddress",
+      type: "function",
       inputs: [
-        {
-          name: 'domainName',
-          type: 'string',
-          internalType: 'string',
-        },
+        { name: "fullDomainName", type: "string", internalType: "string" },
       ],
-      outputs: [
-        {
-          name: '',
-          type: 'address',
-          internalType: 'address',
-        },
-      ],
-      stateMutability: 'view',
+      outputs: [{ name: "", type: "address", internalType: "address" }],
+      stateMutability: "view",
     },
   ];
-  // получение контракта с апи
+  // get the contract
   const getDomainContract = async (blockchainId: string) => {
-    const AUTOCONTRACTS_API_HOST = 'https://autocontracts.conft.app';
+    const AUTOCONTRACTS_API_HOST = "https://autocontracts.conft.app";
 
     const url = `${AUTOCONTRACTS_API_HOST}/chains/${blockchainId}/contracts/domains`;
 
@@ -68,48 +46,49 @@ export const onNameLookup: OnNameLookupHandler = async (request: {
         );
       }
       const result = await response.json();
-      console.log('======result======', result, url);
+      console.log("======result======", result, url);
       return result;
     } catch (error) {
-      console.error('Error fetching domain contract:', error);
+      console.error("Error fetching domain contract:", error);
       return null;
     }
   };
 
-  // // Функция для резолвинга имени через контракт
+  // resolving name via contract
   const resolveDomain = async (domainName: string, blockchainId: string) => {
     try {
-      // Получаем данные контракта
+      // get contract data
       const contractData = await getDomainContract(blockchainId);
 
-      console.log('======contractData=====', contractData);
       if (!contractData) {
-        throw new Error('Domain contract not found');
+        throw new Error("Domain contract not found");
       }
 
       const { address: contractAddress, blockchain } = contractData;
-      const rpc = blockchain.rpcs[0];
+      const rpc = blockchain.custom_rpc || blockchain.rpcs[0];
 
       if (!rpc) {
-        throw new Error('RPC URL not provided');
+        throw new Error("RPC URL not provided");
       }
 
-      // Создаём провайдер и контракт
+      // initiating provider and contract
       const provider = new ethers.providers.JsonRpcProvider(rpc);
       const contract = new ethers.Contract(contractAddress, abi, provider);
-      console.log('contract', contractAddress, blockchain);
-      console.log('contract', contract);
-      // Вызываем метод nameToAddress для мэтча адреса и имени
-      const userAddress = await contract.nameToAdress(domainName);
+
+      // getting user address
+      const topLevelDomain = await contract.TOP_LEVEL_DOMAIN();
+      const userAddress = await contract.fullNameToAddress(
+        `${domainName}${topLevelDomain}`,
+      );
 
       return userAddress || null;
     } catch (error) {
-      console.error('Error resolving domain:', error);
+      console.error("Error resolving domain: ", error);
       return null;
     }
   };
-  // // Резолвим имя через контракт
-  const parsedChainId = chainId.split(':')[1] ?? '1'; // Извлечение нужного айди из чейнайди метамаска "eip155:1" -> "1"
+  // resolving name via contract
+  const parsedChainId = chainId.split(":")[1] ?? "1"; // extracting chain id from metamask "eip155:1" -> "1"
   const resolvedAddress = await resolveDomain(domain, parsedChainId);
 
   if (!resolvedAddress) {
@@ -120,7 +99,7 @@ export const onNameLookup: OnNameLookupHandler = async (request: {
     resolvedAddresses: [
       {
         resolvedAddress,
-        protocol: 'CoLabs Domains',
+        protocol: "CoLabs Domains",
         domainName: domain,
       },
     ],
@@ -128,11 +107,11 @@ export const onNameLookup: OnNameLookupHandler = async (request: {
 };
 
 export const onInstall: OnInstallHandler = async () => {
-  console.log('onInstall called');
+  console.log("onInstall called");
   await snap.request({
-    method: 'snap_dialog',
+    method: "snap_dialog",
     params: {
-      type: 'alert',
+      type: "alert",
       content: (
         <Box>
           <Heading>You're all set! ✅</Heading>
