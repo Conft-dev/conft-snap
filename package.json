@@ -1,6 +1,6 @@
 {
   "name": "@colabs-dev/name-resolver",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Conft domain name resolver",
   "repository": {
     "type": "git",
@@ -10,7 +10,8 @@
   "main": "./dist/bundle.js",
   "files": [
     "dist/",
-    "snap.manifest.json"
+    "snap.manifest.json",
+    "img/"
   ],
   "scripts": {
     "allow-scripts": "yarn workspace root allow-scripts",
