@@ -1,6 +1,6 @@
 {
   "name": "@colabs-dev/name-resolver",
-  "version": "0.3.2",
+  "version": "0.3.4",
   "description": "Conft domain name resolver",
   "repository": {
     "type": "git",
@@ -8,11 +8,6 @@
   },
   "license": "(MIT-0 OR Apache-2.0)",
   "main": "./dist/bundle.js",
-  "files": [
-    "dist/",
-    "snap.manifest.json",
-    "img/"
-  ],
   "scripts": {
     "allow-scripts": "yarn workspace root allow-scripts",
     "build": "mm-snap build",
@@ -24,11 +19,13 @@
     "lint:misc": "prettier '**/*.json' '**/*.md' '**/*.yml' '!.yarnrc.yml' --ignore-path ../../.gitignore --no-error-on-unmatched-pattern",
     "serve": "mm-snap serve",
     "start": "mm-snap watch",
-    "test": "jest"
+    "test": "jest",
+    "prepublishOnly": "mm-snap manifest"
   },
   "dependencies": {
     "@metamask/snaps-sdk": "~6.18.0",
-    "ethers": "5.7.2"
+    "ethers": "5.7.2",
+    "webpack": "^5.99.7"
   },
   "devDependencies": {
     "@jest/globals": "^29.5.0",
