@@ -1,5 +1,5 @@
 {
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Conft domain name resolver",
   "proposedName": "Conft Domains",
   "repository": {
@@ -7,7 +7,7 @@
     "url": "https://github.com/Conft-dev/conft-snap"
   },
   "source": {
-    "shasum": "HxwhqzaFDESA/V6KZitGmlEln0USktm9fkZ+datJbtE=",
+    "shasum": "wMq7BvkqeCHE+Q85VHBDYWCn68knalYEI3CPnfNg8WY=",
     "location": {
       "npm": {
         "iconPath": "img/icon.svg",
