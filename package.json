@@ -1,6 +1,6 @@
 {
   "name": "@colabs-dev/name-resolver",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Conft domain name resolver",
   "repository": {
     "type": "git",
