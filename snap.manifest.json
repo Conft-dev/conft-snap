@@ -1,5 +1,5 @@
 {
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "Conft domain name resolver",
   "proposedName": "Conft Domains",
   "repository": {
@@ -7,7 +7,7 @@
     "url": "https://github.com/Conft-dev/conft-snap"
   },
   "source": {
-    "shasum": "PAe6xX5jfqaxtRw8/tTxEDkB6lj9FcW2Z/DCttgix7U=",
+    "shasum": "6IkxDk97x3m3oqwFfD6xhjv+oWm3eew1To2qNKF9qsk=",
     "location": {
       "npm": {
         "iconPath": "img/icon.svg",
@@ -39,11 +39,13 @@
         "eip155:480",
         "eip155:690",
         "eip155:747",
+        "eip155:841",
         "eip155:995",
         "eip155:1030",
         "eip155:1101",
         "eip155:1116",
         "eip155:1135",
+        "eip155:1439",
         "eip155:1514",
         "eip155:1868",
         "eip155:2040",
@@ -55,6 +57,8 @@
         "eip155:2911",
         "eip155:3109",
         "eip155:3636",
+        "eip155:3637",
+        "eip155:3940",
         "eip155:4200",
         "eip155:4689",
         "eip155:5000",
@@ -71,6 +75,9 @@
         "eip155:13371",
         "eip155:16601",
         "eip155:18880",
+        "eip155:20994",
+        "eip155:28802",
+        "eip155:31612",
         "eip155:33139",
         "eip155:34443",
         "eip155:42161",
@@ -100,6 +107,8 @@
         "eip155:660279",
         "eip155:688688",
         "eip155:747474",
+        "eip155:1440000",
+        "eip155:2019775",
         "eip155:6985385",
         "eip155:7777777",
         "eip155:11155931",
